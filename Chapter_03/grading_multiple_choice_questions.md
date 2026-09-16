@@ -1,4 +1,4 @@
-Suppose there are eight students and ten questions, and the answers are stored in a twodimensional
+Suppose there are eight students and ten questions, and the answers are stored in a two dimensional
 list. Each row records a student’s answers to the questions, as shown in the
 following illustration
 

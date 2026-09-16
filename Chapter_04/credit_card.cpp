@@ -5,74 +5,74 @@ using namespace std;
 vector<int> readVardNumber();
 int getPrefix(vector<int> number, int k);
 bool prefixMatched(vector<int>);
-int getSize(vector<int> number);
-int sumOfOddPlace(vector<int> number);
-int getDigit(int number);
-int sumOfDoubleEvenPlace(vector<int> number);
-bool isValid(vector<int> number);
+// int getSize(vector<int> number);
+// int sumOfOddPlace(vector<int> number);
+// int getDigit(int number);
+// int sumOfDoubleEvenPlace(vector<int> number);
+// bool isValid(vector<int> number);
 
 // Return true if sum of (sum of doubles) and (sum of odds) is divisible by 10 and prefixMatch is true
-bool isValid(vector<int> number)
-{
-    if (((sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0) && prefixMatched(number) && 13 <= getSize(number) && getSize(number) <= 16)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-}
+// bool isValid(vector<int> number)
+// {
+//     if (((sumOfDoubleEvenPlace(number) + sumOfOddPlace(number)) % 10 == 0) && prefixMatched(number) && 13 <= getSize(number) && getSize(number) <= 16)
+//     {
+//         return true;
+//     }
+//     else
+//     {
+//         return false;
+//     }
+// }
 
-int sumOfDoubleEvenPlace(vector<int> number)
-{
-    int sum = 0;
-    // Start at position, i = 0 and incrment through with steps of 2
-    for (int i = 0; i < number.size() - 1; i += 2)
-    {
-        int digit = number[i];
-        // Double even number
-        digit = digit * 2;
+// int sumOfDoubleEvenPlace(vector<int> number)
+// {
+//     int sum = 0;
+//     // Start at position, i = 0 and incrment through with steps of 2
+//     for (int i = 0; i < number.size() - 1; i += 2)
+//     {
+//         int digit = number[i];
+//         // Double even number
+//         digit = digit * 2;
 
-        // // if it is a double digit
-        // if (digit >= 10)
-        // {
-        //     digit = digit / 10 + digit % 10;
-        // }
+//         // // if it is a double digit
+//         // if (digit >= 10)
+//         // {
+//         //     digit = digit / 10 + digit % 10;
+//         // }
 
-        // else
-        // {
-        //     // Pass
-        // }
-        sum += getDigit(digit);
-    }
-    return sum;
-}
+//         // else
+//         // {
+//         //     // Pass
+//         // }
+//         sum += getDigit(digit);
+//     }
+//     return sum;
+// }
 
-// Return this number if it is a single digit, otherwise, return the sum of the two digits
-int getDigit(int number)
-{
-    if (number < 10)
-    {
-        return number;
-    }
-    else
-    {
-        return number / 10 + number % 10;
-    }
-}
+// // Return this number if it is a single digit, otherwise, return the sum of the two digits
+// int getDigit(int number)
+// {
+//     if (number < 10)
+//     {
+//         return number;
+//     }
+//     else
+//     {
+//         return number / 10 + number % 10;
+//     }
+// }
 
 //Return sum of odd place digits in number\
 int sumOfOddPlace(long long number);
-int sumOfOddPlace(vector<int> number)
-{
-    int sum = 0;
-    for (int i = 0; i < number.size(); i += 2)
-    {
-        sum += number[i];
-    }
-    return sum;
-}
+// int sumOfOddPlace(vector<int> number)
+// {
+//     int sum = 0;
+//     for (int i = 0; i < number.size(); i += 2)
+//     {
+//         sum += number[i];
+//     }
+//     return sum;
+// }
 
 //Return the number of digits in d\
 int getSize(long long d);
@@ -98,33 +98,26 @@ bool prefixMatched(vector<int> number)
 
 vector<int> readCardNumber()
 {
-    // long long number = 0;
-    // cout << "Enter number: \n";
-    // cin >> number;
-    // cout << number << "\n";
-
-    // vector<long long> card_digits;
-
-    // while (number > 0)
-    // {
-    //     card_digits.push_back(number % 10);
-    //     number /= 10;
-    // }
-
-    // reverse(card_digits.begin(), card_digits.end());
-    // return card_digits;
-
     std::string number;
+
+    // '34567890'
+    // 'thfjhdjkfkf'
 
     std::cout << "Enter number: \n";
     std::cin >> number;
 
     std::vector<int> card_digits;
 
-    for (char digit : number)
-    {
-        card_digits.push_back(digit - '0');
+    // for (char digit : number)
+    // {
+    //     card_digits.push_back(digit - '0');
+    // }
+    for (int i = 0; i < number.size(); ++i){
+        // Convert number into an integer
+        card_digits.push_back(number[i] - '0');
+        // cout << number[i]<< "\n";
     }
+
 
     return card_digits;
 }
@@ -135,9 +128,9 @@ int getPrefix(std::vector<int> number, int k)
 {
     int k_prefix = 0;
 
-    int length = std::min(k, static_cast<int>(number.size()));
+    int length = number.size();
 
-    for (int i = 0; i < length; i++)
+    for (int i = 0; i < k; i++)
     {
         k_prefix = k_prefix * 10 + number[i];
     }
@@ -148,13 +141,18 @@ int getPrefix(std::vector<int> number, int k)
 int main()
 {
     vector<int> number = readCardNumber();
-    cout << "Prefix: " << getPrefix(number, 2) << "\n";
+    cout << "Prefix: " << getPrefix(number, 3) << "\n";
     cout << "Matched: " << prefixMatched(number) << "\n";
-    cout << "Size: " << getSize(number) << "\n";
-    cout << "Sum of Odd Numbers " << sumOfOddPlace(number) << "\n";
-    // cout << "Single number: " << getDigit(number) << "\n";
-    cout << "Sum of double even numbers: " << sumOfDoubleEvenPlace(number) << "\n";
-    cout << "Valid: " << isValid(number) << "\n";
+    // cout << "Size: " << getSize(number) << "\n";
+    // cout << "Sum of Odd Numbers " << sumOfOddPlace(number) << "\n";
+    // // cout << "Single number: " << getDigit(number) << "\n";
+    // cout << "Sum of double even numbers: " << sumOfDoubleEvenPlace(number) << "\n";
+    // cout << "Valid: " << isValid(number) << "\n";
+    // for (int i = 0; i < number.size(); ++i){
+    //     cout << number[i] << "\n";
+    
+    // }
+    return 0;
 }
 
 // Valid examples
