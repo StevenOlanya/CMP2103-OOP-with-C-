@@ -25,3 +25,5 @@ int main() {
 
 // Compile code
 // g++-16 -std=c++23 -fmodules multiplication_table.cpp -o output/multiplication_table && output/multiplication_table
+
+g++-16 -std=c++23 -fmodules class_definition.cpp -o output/class_definition && output/class_definition
