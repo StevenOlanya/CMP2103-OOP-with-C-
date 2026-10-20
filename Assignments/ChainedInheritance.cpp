@@ -1,5 +1,5 @@
 // 
-// Electrical Engineering: Device -> Load -> Motor
+// Calculation of electrical parameters: Device -> Load -> Motor
 #include <iostream>
 using namespace std;
 

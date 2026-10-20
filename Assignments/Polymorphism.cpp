@@ -1,4 +1,4 @@
-// Q Polymorphism
+//  Polymorphism
 //  Element -> Resistor, Inductor, Capacitor
 #include <iostream>
 using namespace std;
